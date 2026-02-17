@@ -12,6 +12,12 @@ td a:hover {
   background-color: white;
 }
 
+.garden-cell {
+  background-image: url('../garden.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
 #pgrid {
   transform-style: preserve-3d;
   perspective-origin: center center;
