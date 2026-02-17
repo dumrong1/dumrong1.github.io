@@ -1,13 +1,11 @@
 html {
   min-height: 100vw;
 }
-
 td a {
   display: block;
   width: 100%;
   height: 100%;
 }
-
 #pgrid {
   transform-style: preserve-3d;
   perspective-origin: center center;
@@ -18,7 +16,6 @@ td a {
   height: 80vw;
   transform: perspective(2000px) scale(.75);
 }
-
 #center {
   top: 0;
   left: 0;
@@ -27,7 +24,6 @@ td a {
   height: 100%;
   background-color: white;
 }
-
 #centerimg {
   position: absolute;
   top: 50%;
@@ -35,7 +31,6 @@ td a {
   transform: translate(-50%, -50%);
   width: 80%;
 }
-
 #top {
   position: absolute;
   width: 100%;
@@ -44,62 +39,57 @@ td a {
   transform-origin: top center;
   transform: rotateX(90deg);
 }
-
 #bottom {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #f2f2f2;
+  background-color: 
+#f2f2f2;
   transform-origin: bottom center;
   transform: rotateX(-90deg);
   table-layout: fixed;
 }
-
-#bottomhover {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: transparent;
-  border: 2px solid white;
-  color: white;
-  padding: 10px 30px;
+#bottomlink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: block;
+}
+#bottom:hover {
+  background-color: rgba(255, 255, 255, 0.3);
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  z-index: 100;
 }
-
-#bottomhover:hover {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
 #left {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #f7f7f7;
+  background-color: 
+#f7f7f7;
   transform-origin: left center;
   transform: rotateY(-90deg);
   table-layout: fixed;
 }
-
 #right {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #f7f7f7;
+  background-color: 
+#f7f7f7;
   transform-origin: right center;
   transform: rotateY(90deg);
   table-layout: fixed;
 }
-
 #styledtable {
   border-collapse: collapse;
   width: 100%;
   height: 100%;
 }
 #styledtable td {
-  border: 4px solid #ffffff;
+  border: 4px solid 
+#ffffff;
   width: auto;
   height: auto;
   text-align: center;
