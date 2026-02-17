@@ -9,11 +9,7 @@ td a {
 td a:hover {
   background-color: white;
 }
-.garden-cell {
-  background-image: url('https://dumrong1.github.io/garden.jpg');
-  background-size: cover;
-  background-position: center;
-}
+
 #pgrid {
   transform-style: preserve-3d;
   perspective-origin: center center;
