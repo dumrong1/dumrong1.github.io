@@ -22,10 +22,10 @@ td a:hover {
   transform-style: preserve-3d;
   perspective-origin: center center;
   position: absolute;
-  top: 10vw;
-  left: 10vw;
-  width: 80vw;
-  height: 80vw;
+  top: 0vw;
+  left: 0vw;
+  width: 100vw;
+  height: 100vw;
 }
 
 #center {
