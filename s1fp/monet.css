@@ -38,7 +38,7 @@ td a {
   transform: translate(-50%, -50%);
 }
 #centerlink:hover {
-  opacity: 0.7;
+  opacity: 100%;
 }
 
 #top {
