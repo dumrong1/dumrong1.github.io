@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+/* ─── BASE ─── */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  font-family: 'Shadows Into Light', cursive;
+}
+
+/* ─── LAYOUT ─── */
+#ticket-toggle {
+  display: none;
+}
+
+#envwrap {
+  position: relative;
+  display: flex;
+  perspective: 200vw;
+  width: 60vw;
+  align-items: stretch;
+}
+
+#photo-left,
+#front-wrapper,
+#last-page {
+  width: 50%;
+}
+
+#photo-left {
+  display: block;
+}
+
+/* ─── FRONT WRAPPER (flipping page) ─── */
+#front-wrapper {
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 1s ease-in-out;
+  cursor: pointer;
+  z-index: 2;
+  margin-left: -0.5%;
+}
+
+#front-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  backface-visibility: hidden;
+}
+
+#front-wrapper:hover:not(.is-open) {
+  transform: rotateY(-10deg);
+}
+
+#front-wrapper.is-open {
+  transform: rotateY(-180deg);
+}
+
+#front-wrapper.is-open ~ #plane-ticket {
+  pointer-events: auto;
+  z-index: 3;
+}
+
+/* ─── PAGE FACES ─── */
+#photo-right,
+#photo-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 96% !important;
+  height: auto;
+  object-fit: cover;
+  backface-visibility: hidden;
+}
+
+#photo-right { z-index: 2; }
+
+#photo-back {
+  z-index: 1;
+  transform: rotateY(180deg);
+}
+
+#last-page {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 99.8%;
+  z-index: -1;
+  object-fit: cover;
+  margin-left: -0.7%;
+}
+
+/* ─── STAMPS ─── */
+.stamp {
+  position: absolute;
+  height: auto;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+  backface-visibility: hidden;
+}
+
+.stamp:hover { transform: scale(1.1); }
+
+/* front page stamps */
+#stamp-first-page1 { top: 6%;  right: 25%; width: 30% !important; z-index: 3; }
+#stamp-first-page2 { top: 25%; right: 63%; width: 28% !important; z-index: 4; }
+#stamp-first-page3 { top: 34%; right: 12%; width: 28% !important; z-index: 3; }
+#stamp-first-page4 { top: 53%; right: 55%; width: 30% !important; z-index: 4; }
+#stamp-first-page5 { top: 72%; right: 15%; width: 35% !important; z-index: 4; }
+
+/* back page stamps — rotated to face back */
+#stamp-second-page1,
+#stamp-second-page2,
+#stamp-second-page3,
+#stamp-second-page4 {
+  z-index: 3;
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+#stamp-second-page1:hover,
+#stamp-second-page2:hover,
+#stamp-second-page3:hover,
+#stamp-second-page4:hover {
+  transform: rotateY(180deg) scale(1.1);
+}
+
+#stamp-second-page1 { top: 76%; right: 15%; width: 35% !important; }
+#stamp-second-page2 { top: 10%; right: 10%; width: 28% !important; }
+#stamp-second-page3 { top: 25%; right: 48%; width: 22% !important; }
+#stamp-second-page4 { top: 55%; right: 53%; width: 33% !important; }
+
+/* ─── TICKET ─── */
+#plane-ticket {
+  position: absolute;
+  top: 5%;
+  left: 55%;
+  width: 60%;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+  transition: z-index 0s linear 0.5s;
+  display: flex;
+}
+
+#ticket-right-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+#ticket-right {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#ticket-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 1s ease-in-out;
+  cursor: pointer;
+}
+
+#ticket-fold {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+  backface-visibility: hidden;
+}
+
+#ticket-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  z-index: 4;
+}
+
+/* ─── TICKET TOGGLE STATE ─── */
+body:has(#ticket-toggle:checked) #ticket-wrapper {
+  transform: rotateY(-180deg);
+}
+
+body:has(#ticket-toggle:checked) #plane-ticket {
+  z-index: 3;
+  pointer-events: auto;
+}
+
+#ticket-toggle:checked ~ #front-wrapper {
+  pointer-events: none;
+}
+
+/* ─── READING RESPONSES ─── */
+.response {
+  display: none;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  max-height: 80%;
+  overflow-y: auto;
+  font-size: 1vw;
+  line-height: 1.4;
+  color: #333;
+  z-index: 6;
+}
+
+#buttons:has([data-target="res1"]:hover)  ~ #envwrap #author1,
+#buttons:has([data-target="res2"]:hover)  ~ #envwrap #author2,
+#buttons:has([data-target="res3"]:hover)  ~ #envwrap #author3,
+#buttons:has([data-target="res4"]:hover)  ~ #envwrap #author4,
+#buttons:has([data-target="res5"]:hover)  ~ #envwrap #author5,
+#buttons:has([data-target="res6"]:hover)  ~ #envwrap #author6,
+#buttons:has([data-target="res7"]:hover)  ~ #envwrap #author7,
+#buttons:has([data-target="res8"]:hover)  ~ #envwrap #author8,
+#buttons:has([data-target="res9"]:hover)  ~ #envwrap #author9,
+#buttons:has([data-target="res10"]:hover) ~ #envwrap #author10 {
+  display: block;
+}
+
+#buttons:has([data-target="res1"]:hover)  ~ #envwrap #res1,
+#buttons:has([data-target="res2"]:hover)  ~ #envwrap #res2,
+#buttons:has([data-target="res3"]:hover)  ~ #envwrap #res3,
+#buttons:has([data-target="res4"]:hover)  ~ #envwrap #res4,
+#buttons:has([data-target="res5"]:hover)  ~ #envwrap #res5,
+#buttons:has([data-target="res6"]:hover)  ~ #envwrap #res6,
+#buttons:has([data-target="res7"]:hover)  ~ #envwrap #res7,
+#buttons:has([data-target="res8"]:hover)  ~ #envwrap #res8,
+#buttons:has([data-target="res9"]:hover)  ~ #envwrap #res9,
+#buttons:has([data-target="res10"]:hover) ~ #envwrap #res10 {
+  display: block;
+}
+
+/* ─── BUTTONS ─── */
+#buttons {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  gap: 10px;
+  z-index: 500;
+}
+
+body:has(#ticket-toggle:checked) #buttons {
+  display: flex;
+}
+
+.reading-btn {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.reading-btn:hover {
+  transform: scale(1.2) translateY(-5px);
+  z-index: 2001;
+}
+
+#ticket-author-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;        /* above ticket-wrapper's stacking context */
+}
+
+.author {
+  display: none;
+  position: absolute; /* Take it out of the normal text flow */
+  top: 45%;          /* Adjust vertically to fit in the 'FROM' box area */
+  left: -90%;        /* Push it way to the left onto the other half of the ticket */
+  width: 70%;        /* Width of the 'FROM' input area */
+  font-size: 1.5vw;  /* Make it look like a handwritten signature */
+  color: #2c3e50;    /* Ink color */
+  text-align: left;
+  pointer-events: none;
+  margin: 0;
+  z-index: 5000;
+}
