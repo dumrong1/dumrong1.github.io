@@ -213,11 +213,11 @@ body:has(#ticket-toggle:checked) #plane-ticket {
   display: none;
   position: absolute;
   top: 5%;
-  left: 5%;
-  width: 90%;
+  left: 3%;
+  width: 93%;
   max-height: 80%;
   overflow-y: auto;
-  font-size: 1vw;
+  font-size: 0.9vw;
   line-height: 1.4;
   color: #333;
   z-index: 6;
